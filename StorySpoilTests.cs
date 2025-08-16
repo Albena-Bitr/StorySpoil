@@ -9,9 +9,9 @@ namespace StorySpoilAPITests
     public class StorySpoilAPITests : IDisposable
     {
         private RestClient client;
-        private const string baseUrl = Environment.GetEnvironmentVariables(API_BASE_URL);
-        private const string user = Environment.GetEnvironmentVariables(USER_NAME);
-        private const string password = Environment.GetEnvironmentVariables(USER_PASSWORD);
+        private const string baseUrl = "https://d3s5nxhwblsjbi.cloudfront.net";
+        private const string user = "Lemonade";
+        private const string password = "123asd";
         private static string lastCreatedStoryId;
 
         [OneTimeSetUp]
