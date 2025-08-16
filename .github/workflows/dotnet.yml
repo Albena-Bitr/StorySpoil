@@ -1,0 +1,29 @@
+name: StorySpoilCI
+
+on:
+  push:
+    branches: [ "main" ]
+ 
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    env:
+      API_BASE_URL: https://d3s5nxhwblsjbi.cloudfront.net
+      USER_NAME: Lemonade
+      USER_PASSWORD: 123asd
+      
+    steps:
+    - name: Checkout the repo
+      uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build solution
+      run: dotnet build --no-restore
+    - name: Run tests
+      run: dotnet test --no-build --verbosity normal
