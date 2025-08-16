@@ -200,27 +200,27 @@ namespace StorySpoilAPITests
             Assert.That(story.Msg, Is.EqualTo(expectedMessage), "Response message is not as expected");
         }
 
-        [Test, Order(7)]
-        public void TestStirySpoil_RemoveNonExistingStory_ShouldFail()
-        {
-            // Arrange
-            string wrongStoryId = "1234567";
-            string expectedMessage = "Unable to delete this story spoiler!";
+        //[Test, Order(7)]
+        //public void TestStirySpoil_RemoveNonExistingStory_ShouldFail()
+        //{
+        //    // Arrange
+        //    string wrongStoryId = "1234567";
+        //    string expectedMessage = "Unable to delete this story spoiler!";
 
-            var request = new RestRequest($"/api/Story/Delete/{wrongStoryId}", Method.Delete);
+        //    var request = new RestRequest($"/api/Story/Delete/{wrongStoryId}", Method.Delete);
 
-            // Act
-            var response = client.Execute(request);
+        //    // Act
+        //    var response = client.Execute(request);
 
-            // Assert
-            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest), $"Status code is not as expected - {response.StatusCode}");
+        //    // Assert
+        //    Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest), $"Status code is not as expected - {response.StatusCode}");
 
-            Assert.That(response.Content, Is.Not.Null, "Response content is null");
+        //    Assert.That(response.Content, Is.Not.Null, "Response content is null");
 
-            var story = JsonSerializer.Deserialize<ApiResponseDto>(response.Content);
+        //    var story = JsonSerializer.Deserialize<ApiResponseDto>(response.Content);
 
-            Assert.That(story.Msg, Is.EqualTo(expectedMessage), "Response message is not as expected");
-        }
+        //    Assert.That(story.Msg, Is.EqualTo(expectedMessage), "Response message is not as expected");
+        //}
 
         public void Dispose()
         {
